@@ -4,12 +4,7 @@ Heap Manager
 A simple heap manager using segmented freelists and a first-fit selection protocol
 
 ## Structure ##
-Each block has its own header and footer
-#### Metadata Header ####
-- Stores
- - Size: Byte size of block
- - Next: Pointer to next block
- - Prev: pointer to previous block
+Each block has its own header and footer where each header stores its size, excluding the size of the header and footer, and pointers to its next and previous, while the footer holds just the size of the block.
 
 #### Footer ####
 - Stores
@@ -28,7 +23,7 @@ Malloc implementation could use first-fit or best fit block selection based on i
 
 Freeing coalesces, when possible, with both its previous and next blocks, then places the newly freed/merged block into its corresponding freelist.
 
-##cd Test Case Results ##
+## Test Case Results ##
 Testing was done using both first-fit and best fit implementation (both with sorted lists and unsorted) and found first-fit produced the best results with the given methods.  
  - Test-Basic   : Heap Size: 1024         : Result: Passed
  - Test-Coalesce: Heap Size: 1024         : Result: Passed
